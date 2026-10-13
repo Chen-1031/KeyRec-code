@@ -1,0 +1,32 @@
+# Python and local tooling
+.venv*/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+.DS_Store
+*.orig
+*.swp
+
+# Credentials, local caches, models, and data
+.env
+.env.*
+.local/
+data/
+checkpoints/
+*.safetensors
+*.pt
+*.pth
+
+# Downloaded by scripts/setup_third_party.py
+/third_party/VLMEvalKit/
+
+# Evaluation outputs; keep reference metrics in source control
+/results/*
+!/results/reference/
+/outputs/
+*.log
+plan.json
+*.pdf

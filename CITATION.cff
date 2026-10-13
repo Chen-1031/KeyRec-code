@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+message: Anonymous software release.
+title: KeyRec
+type: software
+authors:
+  - name: Anonymous
+version: 0.1.0

@@ -1,11 +1,5 @@
 # Reproducible environments
 
-The virtual environments used during research are intentionally not copied
-into this repository. Virtual environments contain platform-specific binaries,
-absolute paths, and editable installs, so copying their directories would not
-produce a portable or independently reproducible setup.
-
-The files in this directory record the environments as observed on 2026-08-26.
 Use the Gemma lockfile and the separate NEO dependency profile below.
 
 Evaluation CLIs default to the user-writable `~/.cache/keyrec` tree. Cluster

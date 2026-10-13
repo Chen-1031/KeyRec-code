@@ -1,0 +1,119 @@
+schema_version: 1
+
+methods:
+  - vanilla
+  - keyrec
+
+models:
+  gemma4_e2b:
+    label: Gemma 4 E2B
+    family: gemma
+    checkpoint: google/gemma-4-E2B-it
+  gemma4_e4b:
+    label: Gemma 4 E4B
+    family: gemma
+    checkpoint: google/gemma-4-E4B-it
+  neo_ov_2b:
+    label: NEO-ov 2B
+    family: neo
+    checkpoint: Paranioar/NEO1_5-2B-SFT
+
+benchmarks:
+  ovo_bench:
+    label: OVO-Bench
+    regime: streaming
+    subsets: [Backward, Realtime]
+  streamingbench:
+    label: StreamingBench
+    regime: streaming
+    subsets: [Realtime]
+  longvideobench:
+    label: LongVideoBench
+    regime: long_video
+    subsets: [Validation]
+  video_mme_v2:
+    label: Video-MME v2
+    regime: long_video
+    subsets: [Overall]
+
+event_update:
+  merge_similarity: 0.75
+  merge_max_gap_seconds: 2.0
+  route_moving_average_weight: 0.2
+
+profiles:
+  gemma_streaming:
+    family: gemma
+    regime: streaming
+    sampled_frames: 32
+    nominal_tokens_per_frame: 70
+    chunk_size: 1
+    top_m_novel_tokens: 16
+    event_payload_tokens: 16
+    event_capacity: 16
+    recent_cache_tokens: 224
+    readout_budget_tokens: 224
+    temporal_coverage_weight: 0.2
+    event_allocations:
+      all_recent: 0
+      heavy_recent: 2
+      balanced: 4
+      heavy_key_event: 12
+      all_key_event: 14
+
+  neo_streaming:
+    family: neo
+    regime: streaming
+    sampled_frames: 32
+    nominal_tokens_per_frame: 210
+    chunk_size: 1
+    top_m_novel_tokens: 48
+    event_payload_tokens: 48
+    event_capacity: 16
+    recent_cache_tokens: 672
+    readout_budget_tokens: 672
+    temporal_coverage_weight: 0.2
+    event_allocations:
+      all_recent: 0
+      heavy_recent: 2
+      balanced: 4
+      heavy_key_event: 12
+      all_key_event: 14
+
+  gemma_long_video:
+    family: gemma
+    regime: long_video
+    sampled_frames: 64
+    nominal_tokens_per_frame: 70
+    chunk_size: 1
+    top_m_novel_tokens: 16
+    event_payload_tokens: 16
+    event_capacity: 32
+    recent_cache_tokens: 448
+    readout_budget_tokens: 448
+    temporal_coverage_weight: 0.0
+    event_allocations:
+      all_recent: 0
+      heavy_recent: 8
+      balanced: 14
+      heavy_key_event: 24
+      all_key_event: 28
+
+  neo_long_video:
+    family: neo
+    regime: long_video
+    sampled_frames: 64
+    nominal_tokens_per_frame: 210
+    chunk_size: 1
+    top_m_novel_tokens: 48
+    event_payload_tokens: 48
+    event_capacity: 32
+    recent_cache_tokens: 1344
+    readout_budget_tokens: 1344
+    temporal_coverage_weight: 0.0
+    event_allocations:
+      all_recent: 0
+      heavy_recent: 8
+      balanced: 14
+      heavy_key_event: 24
+      all_key_event: 28

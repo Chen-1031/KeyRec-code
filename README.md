@@ -1,6 +1,12 @@
-# KeyRec
 
-### Bounded Visual Memory for Streaming and Long-Video Understanding
+<h1 align="center">KeyRec: Bounded Visual Memory<br>for Streaming and Long-Video Understanding</h1>
+
+<p align="center">Zihan Chen<sup>1,2</sup>, Xuejian Rong<sup>2</sup>, Xiaojuan Wang<sup>2</sup>, Boqing Gong<sup>2</sup>,<br>Adi Zicher<sup>2</sup>, Yael Pritch<sup>2</sup>, and Nikhil Karnad<sup>2</sup></p>
+<p align="center"><sup>1</sup> University of Virginia &nbsp; <sup>2</sup> Google</p>
+<p align="center"><a href="https://www.virginia.edu/"><img src="docs/assets/brand/uva.png" alt="University of Virginia" height="38"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://about.google/"><img src="docs/assets/brand/google.png" alt="Google" height="38"></a></p>
+<p align="center"><a href="https://arxiv.org/pdf/2609.32182"><img src="docs/assets/badges/arxiv.svg" alt="arXiv paper" height="28"></a>&nbsp;&nbsp;<a href="https://chen-1031.github.io/KeyRec/"><img src="docs/assets/badges/project-page.svg" alt="Companion website" height="28"></a></p>
+
+
 
 KeyRec is a training-free visual memory for streaming and long-video understanding.
 It maintains a recent-token cache and a bounded bank of past events, then selects

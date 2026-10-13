@@ -1,0 +1,40 @@
+profile: neo-ov
+observed_at: "2026-08-26"
+status: reference_environment
+environment_size_gib: 7.9
+
+python: "3.10.20"
+platform: Linux-6.17.0-1022-gcp-x86_64-with-glibc2.39
+packages:
+  torch: 2.8.0+cu128
+  torchvision: 0.23.0+cu128
+  transformers: 4.57.3
+  torch_cuda: "12.8"
+  cudnn: 91300
+
+lock:
+  files:
+    - requirements.observed.txt
+  format: uv-pip-freeze
+  limitation: >-
+    This is an observed package snapshot. Versions are pinned, but wheel hashes
+    are not yet recorded and the package set is not resolver-consistent.
+
+editable_installs_observed:
+  - package: vlmeval
+    old_location: external research worktree NEO VLMEvalKit adapter
+    replacement: repository-owned NEO codec and Video-MME-v2 runner; no VLMEval runtime dependency
+
+host_observed:
+  gpu: NVIDIA RTX PRO 6000 Blackwell Server Edition
+  gpu_count: 8
+  gpu_memory_mib: 97887
+  driver: "580.173.02"
+
+validation_observed:
+  cuda_available: true
+  dependency_check: failed
+  incompatibilities:
+    - decord was reported as built for a different platform
+    - gradio 6.20.0 requires huggingface-hub >=1.2.0,<2.0 but 0.36.2 is installed
+  decord_import: passed with version 0.6.0
